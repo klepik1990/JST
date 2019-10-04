@@ -1,0 +1,22 @@
+{
+  "name": "jsproject",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "run-codeceptjs": "codeceptjs run --steps",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/lodash": "^4.14.141",
+    "codeceptjs": "^2.3.2",
+    "lodash": "^4.17.15",
+    "puppeteer": "^1.20.0"
+  },
+  "description": "",
+  "dependencies": {
+    "datatables.net": "^1.10.20"
+  }
+}

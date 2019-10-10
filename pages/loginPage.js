@@ -23,7 +23,7 @@ module.exports = {
         await I.pressKey('Enter');
         await I.wait(0.5);
         // await I.waitForElement(this.elements.skipAvatar, 10);
-        await I.click(this.elements.skipAvatar);
+        // await I.click(this.elements.skipAvatar);
     },
 
     async checkUserID() {

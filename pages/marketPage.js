@@ -46,7 +46,7 @@ module.exports = {
         return I.grabAttributeFrom(this.elements.deviceToCompare2, 'title');
     },
 
-    async addToCompare() {
+    async addDeviceToCompare() {
         await I.moveCursorTo(this.elements.deviceToCompare1);
         await within(this.elements.deviceToCompare1, function () {
             I.click('.n-snippet-cell2__image link i-bem link_js_inited');

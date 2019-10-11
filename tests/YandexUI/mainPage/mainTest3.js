@@ -1,4 +1,4 @@
-Feature ('Проверка logout');
+Feature ('Проверка работы выхода из системы logout');
 
 Scenario('Проверка выхода из почты', async (main, login) => {
     await main.openStartPage();

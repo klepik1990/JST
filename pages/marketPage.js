@@ -1,4 +1,5 @@
 const I = actor();
+const assert = require('assert');
 
 module.exports = {
 
@@ -9,7 +10,6 @@ module.exports = {
         deviceToCompare1: 'div[data-id=model-1731400948]',
         deviceToCompare2: 'div[data-id=model-573324027]',
         addToCompareList: '.n-product-toolbar__item-label',
-        compareButton: '.button button_size_m button_theme_normal i-bem button_js_inited',
         electronics: 'Электроника',
         tabDevice: 'Планшеты',
         byPrice: 'по цене',
@@ -39,32 +39,40 @@ module.exports = {
     },
 
     async getTextValue1() {
-        return I.grabValueFrom(this.elements.deviceToCompare1);
+        return I.grabAttributeFrom("//div[@data-id='model-1731400948']//img", 'title');
     },
 
     async getTextValue2() {
-        return I.grabAttributeFrom(this.elements.deviceToCompare2, 'title');
+        return I.grabAttributeFrom("//div[@data-id='model-573324027']//img", 'title');
     },
 
     async addDeviceToCompare() {
         await I.moveCursorTo(this.elements.deviceToCompare1);
-        await within(this.elements.deviceToCompare1, function () {
-            I.click('.n-snippet-cell2__image link i-bem link_js_inited');
+        await within(this.elements.deviceToCompare1, async function () {
+            await I.click('i.image_name_compare');
         });
-        // await I.click('Сравнить');
         await I.moveCursorTo(this.elements.deviceToCompare2);
-        await I.click('Сравнить');
+        await within(this.elements.deviceToCompare2, async function () {
+            await I.click('i.image_name_compare');
+        });
     },
 
     async clickCompareButton() {
-        await I.waitForVisible(this.elements.compareButton, 5);
-        await I.click(this.elements.compareButton);
+        await I.waitForText('Сравнить', 5);
+        await I.click('Сравнить');
     },
 
-    async compareDevices(description) {
-        await I.seeTextEquals(description, '.n-compare-head__name link')
+    async checkDevice1(description) {
+        let device = await I.grabAttributeFrom('//div/img', 'alt');
+        await console.log(device[1]);
+        await assert.equal(description, device[1]);
     },
 
+    async checkDevice2(description) {
+        let device = await I.grabAttributeFrom('//div/img', 'alt');
+        await console.log(device[0]);
+        await assert.equal(description, device[0]);
+    },
     async priceComparator() {
         let price = await I.grabTextFrom(this.elements.priceToCompare);
         await console.log(parseFloat(price[0]));

@@ -1,5 +1,4 @@
-
-Feature ('Сравнение списка доступных сервисов.');
+Feature ('Сравнение списков доступных сервисов для разных локаций.');
 
 Scenario('Service Lists Comparing.', async (I, main) => {
     await main.openStartPage();

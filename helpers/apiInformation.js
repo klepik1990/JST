@@ -20,24 +20,31 @@ module.exports = {
             info = await unirest.get(`${this.elements.URL}resources?path=${folderName}&fields=path, type`)
                 .header(this.elements.customHeaders);
         }
+
         if (info.statusCode === 404) {
             await assert.equal(info.body.description, 'Resource not found.');
+        } else if (subfolderName !== undefined) {
+            await assert.equal(info.body.path, `disk:/${folderName}/${subfolderName}`);
         } else {
             await assert.equal(info.body.path, `disk:/${folderName}`);
         }
     },
 
-    async getFileInfo(folderName, subfolderName = undefined, fileName) {
+    async getFileInfo(folderName, fileName, subfolderName = undefined) {
         let fileInfo;
         if (subfolderName === undefined) {
             fileInfo = await unirest.get(`${this.elements.URL}resources?path=${folderName}/${fileName}.jpeg&fields=path`)
                 .header(this.elements.customHeaders);
         } else {
-            fileInfo = await unirest.get(`${this.elements.URL}resources?path=${folderName}/${subfolderName}/${fileName}.jpeg&fields=path`)
+            fileInfo = await unirest.get(
+                `${this.elements.URL}resources?path=${folderName}/${subfolderName}/${fileName}.jpeg&fields=path`)
                 .header(this.elements.customHeaders);
         }
+
         if (fileInfo.statusCode === 404) {
             assert.equal(fileInfo.body.description, 'Resource not found.');
+        } else if (subfolderName !== undefined) {
+            assert.equal(fileInfo.body.path, `disk:/${folderName}/${subfolderName}/${fileName}.jpeg`);
         } else {
             assert.equal(fileInfo.body.path, `disk:/${folderName}/${fileName}.jpeg`);
         }
@@ -55,7 +62,7 @@ module.exports = {
 
     async getBucketSize() {
         let size = await unirest.get(`${this.elements.URL}`).header(this.elements.customHeaders);
-        await console.log('Размер корзины=', size.body.trash_size);
+        await console.log('Размер корзины =', size.body.trash_size);
         return size.body.trash_size;
     },
 
@@ -70,8 +77,5 @@ module.exports = {
     async checkSizesForEquals(fileSize1, fileSize2, bucketSizeBefore, bucketSizeAfter) {
         await assert.equal(fileSize1 + fileSize2 + bucketSizeBefore, bucketSizeAfter);
     },
-
-
-
 
 }

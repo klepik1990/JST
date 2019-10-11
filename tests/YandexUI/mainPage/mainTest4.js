@@ -1,4 +1,4 @@
-Feature ('Вход с невалидным паролем');
+Feature ('Проверка входа с невалидным паролем');
 
 Scenario('Проверка системы на ввод неверного пароля', async(main, login) => {
     await main.openStartPage();

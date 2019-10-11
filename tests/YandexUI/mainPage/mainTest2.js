@@ -1,4 +1,4 @@
-Feature ('Проверка корректности UserID');
+Feature ('Проверка корректности UserID после входа в систему');
 
 Scenario ('Check UserID', async (main, login) => {
     await main.openStartPage();

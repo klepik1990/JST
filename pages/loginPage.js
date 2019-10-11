@@ -34,6 +34,7 @@ module.exports = {
     async logout() {
         await I.waitForElement(this.elements.userID, 10);
         await I.click(this.elements.userID);
+        await I.waitForText('Выйти из сервисов Яндекса');
         await I.click('Выйти из сервисов Яндекса');
     },
 

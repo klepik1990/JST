@@ -14,5 +14,5 @@ Scenario('Переход по вкладкам', async (main, navigations) => {
     await navigations.goBack();
     await navigations.moveTo('a[data-id=music]', 'music');
     await navigations.goBack();
-    await navigations.moveToVideo('a[data-id=video]' ,'Яндекс.Эфир');
+    await navigations.moveTo('a[data-id=video]' , 'Яндекс.Эфир');
 });

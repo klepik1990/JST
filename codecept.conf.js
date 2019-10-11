@@ -1,16 +1,20 @@
 exports.config = {
-  tests:'./**/yandexAPITest*.js',
+  tests:'./**/mainTest*.js',
   output: './output',
+  timeout: 20000,
   helpers: {
     Puppeteer: {
       waitForNavigation: "networkidle0",
-      windowSize: "1920x1080",
+      // waitForAction: 500,
+      // restart: true,
+      // keepBrowserState: false,
+      windowSize: "1366x768",
       url: 'http://localhost',
       show: true,
       chrome: {
-        args:[
+        args: [
           'disable-infobars=true',
-          'safebrowsing-disable-download-protection',
+          '--safebrowsing-disable-download-protection',
           '--disable-impl-side-painting',
           '--disable-gpu',
           '--ignore-certificate-errors',
@@ -30,6 +34,13 @@ exports.config = {
         },
     }
   },
+   plugins: {
+       allure: {
+           enabled: true,
+           outputDir: "allure-results"
+       },
+
+   },
    include: {
        main: './pages/main.js',
        login: './pages/loginPage.js',

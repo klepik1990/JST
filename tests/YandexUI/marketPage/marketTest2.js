@@ -1,4 +1,4 @@
-Feature('Проверка сортировки');
+Feature('Проверка работы сортировки');
 
 Scenario('Проверка работы сортировки', async (main, market) => {
     await main.openStartPage();

@@ -1,4 +1,4 @@
-Feature('Ищем Metallica');
+Feature('Проверка поиска выбранной группы.');
 
 Before(async (main, login) => {
     await main.openStartPage();

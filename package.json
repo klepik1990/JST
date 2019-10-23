@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "run-codeceptjs": "codeceptjs run --steps",
-    "runAllureReporter" :  "allure serve allure-results\n",
+    "runAllureReporter" :  "allure serve allure-results",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

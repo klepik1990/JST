@@ -12,7 +12,6 @@ module.exports = {
         image1: 'https://content.onliner.by/news/820x5616/ae0a84b410422e818a91e7b0aba74e6b.jpeg',
         image2: 'https://content.onliner.by/news/820x5616/e7d2ab731b758e3314dc8099882275f4.jpeg'
     },
-
     async createFolder(folderName, subfolderName = undefined) {
         if (subfolderName === undefined) {
             assert.notEqual(folderName, undefined, 'Отсутствует имя папки!');

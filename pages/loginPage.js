@@ -17,6 +17,7 @@ module.exports = {
     async sendLogin(name) {
         await I.fillField(this.elements.login, name);
         await I.pressKey('Enter');
+        await I.wait(0.5);
     },
     async sendPassword(password) {
         await I.fillField(this.elements.pass, password);

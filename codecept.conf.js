@@ -1,6 +1,6 @@
 exports.config = {
-  tests:'./**/mainTest*.js',
-  output: './output',
+  tests:"./**/musicTest*.js",
+  output: "./output",
   timeout: 20000,
   helpers: {
     Puppeteer: {
@@ -9,30 +9,30 @@ exports.config = {
       // restart: true,
       // keepBrowserState: false,
       windowSize: "1366x768",
-      url: 'http://localhost',
+      url: "http://localhost",
       show: true,
       chrome: {
         args: [
-          'disable-infobars=true',
-          '--safebrowsing-disable-download-protection',
-          '--disable-impl-side-painting',
-          '--disable-gpu',
-          '--ignore-certificate-errors',
-          '--headless',
-          '--no-sandbox',
-          '--start-maximized']
+          "disable-infobars=true",
+          "--safebrowsing-disable-download-protection",
+          "--disable-impl-side-painting",
+          "--disable-gpu",
+          "--ignore-certificate-errors",
+          // "--headless",
+          "--no-sandbox",
+          "--start-maximized"]
       },
     },
     mock: {
-        require: './helpers/mock.js'
+        require: "./helpers/mock.js"
     },
-    REST: {
-        endpoint: 'https://cloud-api.yandex.net:443/v1/disk/',
-        defaultHeaders: {
-            "Authorization": "OAuth AgAAAAA00Se2AAW1W1yCegavqkretMXBGkoUUQk",
-            "Accept": "*/*"
-        },
-    }
+    // REST: {
+    //     endpoint: "https://cloud-api.yandex.net:443/v1/disk/",
+    //     defaultHeaders: {
+    //         "Authorization": "OAuth AgAAAAA00Se2AAW1W1yCegavqkretMXBGkoUUQk",
+    //         "Accept": "*/*"
+    //     },
+    // }
   },
    plugins: {
        allure: {
@@ -42,16 +42,16 @@ exports.config = {
 
    },
    include: {
-       main: './pages/main.js',
-       login: './pages/loginPage.js',
-       navigations: './pages/navigation.js',
-       market: './pages/marketPage.js',
-       music: './pages/musicPage.js',
-       api: './helpers/apiActions.js',
-       info: './helpers/apiInformation.js'
+       main: "./pages/main.js",
+       login: "./pages/loginPage.js",
+       navigations: "./pages/navigation.js",
+       market: "./pages/marketPage.js",
+       music: "./pages/musicPage.js",
+       api: "./helpers/apiActions.js",
+       info: "./helpers/apiInformation.js"
    },
   bootstrap: null,
   mocha: {},
-  name: 'jsproject',
-  translation: 'ru-RU'
+  name: "jsproject",
+  translation: "ru-RU"
 };

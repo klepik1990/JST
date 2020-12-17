@@ -20,6 +20,6 @@
   },
   "description": "",
   "dependencies": {
-    "datatables.net": "^1.10.20"
+    "datatables.net": "^1.10.22"
   }
 }
